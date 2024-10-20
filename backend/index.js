@@ -1,9 +1,14 @@
 const express = require("express");
+const cors = require("cors")
+const app = express();
+
 const { createTodo, updateTodo } = require("./types");
 const { Todo } = require("./db");
-const app = express();
-app.use(express.json())
+
 require('dotenv').config();
+
+app.use(cors());
+app.use(express.json())
 
 app.post('/todo',async (req, res)=>{
     let createPayload = req.body;
